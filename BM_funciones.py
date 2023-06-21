@@ -38,7 +38,7 @@ def crear_tabla_ranking(path): #"2do Parcial/Limpio/BM_ranking.db"
 def devolver_lista_ranking(path):
     with sqlite3.connect(path) as conexion:
         cursor = conexion.execute("SELECT * FROM ranking ORDER BY score ASC")
-        lista_ranking = [{"ID": 0, "nombre": "NOMBRE", "score": "SCORE"}]
+        lista_ranking = [{"ID": 0, "nombre": "NOMBRE", "score": "TIEMPO"}]
         for fila in cursor:
             dict_jugador = {}
             dict_jugador["id"] = fila[0]

@@ -93,6 +93,7 @@ while flag_correr:
                     if (lista_posicion[1]> rect_boton[1] and lista_posicion[1]< (rect_boton[1]+rect_boton[3])):
                         JUGANDO = 1
                         lista_posicion = [0,0]
+                        emoji.expresion = 0 
                 if ingreso_rect.collidepoint(lista_posicion) and ingreso == "Jugador":
                     ingreso = "|"
 
@@ -103,8 +104,9 @@ while flag_correr:
                     if flag_habilitar_ingreso:
                         if evento.key == pygame.K_BACKSPACE:  # Si se pulsa Retroceso, borra el último carácter
                             ingreso = ingreso[:-1]
-                        elif evento.key == pygame.K_RETURN:
+                        elif evento.key == pygame.K_RETURN: #empieza el juego
                             JUGANDO = 1
+                            emoji.expresion = 0 
                         else:
                             valor = pygame.key.name(evento.key)  # Obtener el carácter asociado a la tecla
                             if len(valor) == 1:  # Asegurarse de que es un carácter imprimible
