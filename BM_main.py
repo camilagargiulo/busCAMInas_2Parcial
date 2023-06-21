@@ -110,6 +110,7 @@ while flag_correr:
                             if len(valor) == 1:  # Asegurarse de que es un carácter imprimible
                                 ingreso += valor
         
+        #Tabla de Ranking 
         for i in range(len(lista_ranking)):
             texto = "{0}º {1}".format(i, lista_ranking[i]["nombre"])
             if i == 0:
@@ -183,13 +184,15 @@ while flag_correr:
                     if tablero.flag_ganador:
                         guardar_score(ruta, ingreso, tiempo)
 
+                    #Vuelvo el emoji la expresion inicial
+                    emoji.expresion = 0
+
                     #Para volver a la pantalla de inicio
                     JUGANDO = 0
 
                     #Reseteo las configuraciones iniciales
                     flag_habilitar_ingreso = False
                     ingreso = "Jugador"
-                    emoji.expresion = 0
                     tablero.explotar("stop")
                 
             #Evento creado por mi para marcar el tiempo/score

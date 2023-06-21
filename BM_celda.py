@@ -4,6 +4,7 @@ from BM_constantes import *
 
 pygame.init()
 
+#Cargo las imagenes que contendra cada celda
 imagen_bandera = pygame.image.load("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/bandera.png")
 imagen_bandera = pygame.transform.scale(imagen_bandera, (TAMAÑO_CELDA, TAMAÑO_CELDA))
 
@@ -49,6 +50,7 @@ class Celda():
                     texto = fuente.render(str(self.bombas_vecinas), True, colores.BLUE)
                     pantalla.blit(texto, (self.rect[0]+ TAMAÑO_CELDA/3, self.rect[1] + 2))
                     self.bandera = False
+                    
         elif self.bandera:
                 pantalla.blit(imagen_bandera, (x, y))
 

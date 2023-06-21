@@ -17,6 +17,7 @@ def getSuperficies(path, filas, columnas):
             lista.append(superficie_fotograma)
     return lista
 
+#Creo la clase personaje para manejar la expresion del emoji a traves de un sprite
 class Personaje:
     def __init__(self) -> None:
         self.caras = getSuperficies("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/personaje.png", 1,5)

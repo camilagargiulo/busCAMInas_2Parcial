@@ -6,17 +6,18 @@ from BM_constantes import *
 from BM_personaje import emoji
 from BM_funciones import crear_lista_celdas
 
+#Cargo todos los sonidos que va a hacer de acuerdo a los movimientos
 sonido_destapar = pygame.mixer.Sound("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/destapar.mp3")
-sonido_destapar.set_volume(1)
+sonido_destapar.set_volume(0.7)
 
 sonido_ganador = pygame.mixer.Sound("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/ganador.mp3")
-sonido_ganador.set_volume(0.5)
+sonido_ganador.set_volume(0.9)
 
 sonido_explosion = pygame.mixer.Sound("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/explosion_recortada.wav")
 sonido_explosion.set_volume(0.5)
 
 sonido_explosion_final = pygame.mixer.Sound("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/mi_explosion_03_hpx.wav")
-sonido_explosion_final.set_volume(0.7)
+sonido_explosion_final.set_volume(0.9)
         
 class Tablero:
     def __init__(self) -> None:
@@ -35,6 +36,7 @@ class Tablero:
             if e_celda.rect.collidepoint(lista_posicion):
                 posicion_inicial = self.lista_celdas.index(e_celda)
         lista_posiciones_bombas = random.sample(range(len(self.lista_celdas)), cantidad_bombas)
+        #utilizo esta validacion para que el primer click no contenga una bomba
         while posicion_inicial in lista_posiciones_bombas:
             lista_posiciones_bombas = random.sample(range(len(self.lista_celdas)), cantidad_bombas)
         for i in lista_posiciones_bombas:
@@ -44,6 +46,7 @@ class Tablero:
 
             
     def definir_elementos_celdas(self, lista_posicion):
+        #Esta funcion asigna a cada celda el numero de bombas vecinas
         self.asignar_bombitas(CANTIDAD_BOMBAS, lista_posicion)
         for e_celda in self.lista_celdas:
             lista_coord_vecinos = e_celda.lista_coord_vecinos
@@ -79,19 +82,17 @@ class Tablero:
     def destapar_celda(self, e_celda):
         if e_celda.visible:
             return
-
         e_celda.visible = True
         self.cantidad_visibles += 1
-
         if e_celda.bombas_vecinas != 0:
             return
-
-        # Destapar celdas adyacentes recursivamente
+        #Destapar celdas adyacentes recursivamente
         for e_coord in e_celda.lista_coord_vecinos:
             if e_coord[0] > -1 and e_coord[0] < CANTIDAD_X and e_coord[1] > -1 and e_coord[1] < CANTIDAD_Y:
                     self.destapar_celda(self[(e_coord)])
 
     def actualizar_tablero(self, pantalla):
+    #Recorre la lista de celdas y llama a la funcion dibujar para mostrarla en caso de haber sufrido una modificacion en su estado
         for e_celda in self.lista_celdas:
             e_celda.dibujar(pantalla)  
         pygame.draw.rect(pantalla, colores.GRAY20, (POS_LEFT_TABLERO, POS_TOP_TABLERO, ANCHO_TABLERO,ALTO_TABLERO), 4)
@@ -101,6 +102,7 @@ class Tablero:
 
     
     def __getitem__(self,index:list) -> str:
+        #Se busca en la lista y devuelve la celda por las coordenadas de fila columna
         for e_celda in self.lista_celdas:
             index = tuple(index)
             if index == e_celda.coord:
@@ -119,7 +121,6 @@ class Tablero:
             #sonido_explosion.play(CANTIDAD_BOMBAS-1)
             sonido_explosion_final.play()
             
-
 
     def contar_cantidad_banderas(self):
         cantidad_banderas = 0
