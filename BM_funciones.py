@@ -48,7 +48,6 @@ def devolver_lista_ranking(path):
         return lista_ranking[0:10]
 
 
-
 def guardar_score(path, ingreso, tiempo):
     nombre = ingreso
     score = tiempo

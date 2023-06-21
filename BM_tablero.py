@@ -6,10 +6,8 @@ from BM_constantes import *
 from BM_personaje import emoji
 from BM_funciones import crear_lista_celdas
 
-
 sonido_destapar = pygame.mixer.Sound("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/destapar.mp3")
 sonido_destapar.set_volume(1)
-
 
 sonido_ganador = pygame.mixer.Sound("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/ganador.mp3")
 sonido_ganador.set_volume(0.5)
@@ -19,10 +17,7 @@ sonido_explosion.set_volume(0.5)
 
 sonido_explosion_final = pygame.mixer.Sound("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/mi_explosion_03_hpx.wav")
 sonido_explosion_final.set_volume(0.7)
-
-
         
-
 class Tablero:
     def __init__(self) -> None:
         self.lista_celdas = crear_lista_celdas()

@@ -2,8 +2,6 @@ import pygame
 import colores
 from BM_constantes import *
 
-
-
 pygame.init()
 
 imagen_bandera = pygame.image.load("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/bandera.png")
@@ -34,9 +32,15 @@ class Celda():
 
         if self.visible:
             if self.bomba:
-                pygame.draw.rect(pantalla, colores.RED1, (x, y, TAMAÑO_CELDA, TAMAÑO_CELDA))
-                #pygame.draw.circle(pantalla, colores.BLACK, (x + TAMAÑO_CELDA // 2, y + TAMAÑO_CELDA // 2), TAMAÑO_CELDA // 4)
-                pantalla.blit(imagen_bomba, (x, y))
+                if self.bandera:
+                    pygame.draw.rect(pantalla, colores.WHITESMOKE, (x, y, TAMAÑO_CELDA, TAMAÑO_CELDA))
+                    pantalla.blit(imagen_bomba, (x, y))
+                    fuente = pygame.font.SysFont(BITSTREAM_VERA_SANS, 30)
+                    cruz = fuente.render("X", True, colores.RED1)
+                    pantalla.blit(cruz, (x+5, y-1))
+                else:
+                    pygame.draw.rect(pantalla, colores.RED1, (x, y, TAMAÑO_CELDA, TAMAÑO_CELDA))
+                    pantalla.blit(imagen_bomba, (x, y))
 
             else:
                 pygame.draw.rect(pantalla, colores.ARENA, (x, y, TAMAÑO_CELDA, TAMAÑO_CELDA))
