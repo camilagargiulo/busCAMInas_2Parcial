@@ -5,10 +5,10 @@ from BM_constantes import *
 pygame.init()
 
 #Cargo las imagenes que contendra cada celda
-imagen_bandera = pygame.image.load("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/bandera.png")
+imagen_bandera = pygame.image.load("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Progra y Labo I/Visual Studio Code/2do Parcial/Limpio/bandera.png")
 imagen_bandera = pygame.transform.scale(imagen_bandera, (TAMAÑO_CELDA, TAMAÑO_CELDA))
 
-imagen_bomba = pygame.image.load("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Visual Studio Code/2do Parcial/Limpio/bombamala.png")
+imagen_bomba = pygame.image.load("/Users/camilagargiulomundo/iCloud Drive (archivo)/Documents/Facultad/UTN/Progra y Labo I/Visual Studio Code/2do Parcial/Limpio/bombamala.png")
 imagen_bomba = pygame.transform.scale(imagen_bomba, (TAMAÑO_CELDA, TAMAÑO_CELDA))
 
 
